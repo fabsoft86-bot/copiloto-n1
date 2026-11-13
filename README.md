@@ -1,8 +1,8 @@
 # Copiloto N1
 
-Copiloto para **analista de suporte N1**: acompanha o atendimento, preenche o chamado a partir da conversa, aponta o que falta (com a **pergunta sugerida** para cada pendência) e dá uma **nota de qualidade** ao registro. O analista continua no controle: a ferramenta sugere, o humano confirma.
+Assistente **pessoal** para o analista de suporte N1: um **roteiro guiado de perguntas** que conduz o atendimento, aponta o que falta e gera o texto final do chamado para colar em qualquer helpdesk. **Sem LLM**, offline, com os dados ficando no seu dispositivo. O analista continua no controle: a ferramenta sugere, o humano confirma.
 
-> Estado atual: **MVP funcional** com validador, extrator por regras, CLI, painel Streamlit, export/import em JSON/TXT, e modo demo para apresentações.
+> **Direção atual: PWA primeiro** (ver `docs/adr/0003-pwa-first.md`). O código Python deste repositório (validador, perfil, extrator, CLI) é a **especificação de referência** das regras, que serão portadas para o PWA. O app desktop foi arquivado em `legado/desktop/`. Estado: o PWA ainda não foi construído; veja `docs/backlog.md`.
 
 ## Visão geral do produto
 
@@ -52,39 +52,11 @@ python -m pip install -e ".[dev]"
 pytest
 ```
 
-## Rodando o painel Streamlit
+## Interface
 
-```bash
-copiloto-n1 painel
-```
+A interface oficial será um **PWA** (HTML/JS estático, instalável, offline). Enquanto ele não existe, as regras podem ser exercitadas pela CLI (`copiloto-n1 validar`, `extrair`, `resumo`).
 
-Ou diretamente:
-
-```bash
-python -m streamlit run src/copiloto_n1/painel.py
-```
-
-A interface abrirá em `http://localhost:8501`.
-
-## Rodando a aplicação desktop nativa
-
-```bash
-copiloto-n1 desktop
-```
-
-A interface desktop nativa do N1 Flow é baseada em PySide6 e é o caminho recomendado para uma experiência mais profissional fora do navegador. Ela preserva o núcleo de extração, validação e resumo do projeto e oferece uma base real para evolução do produto.
-
-## Build de executável desktop e app mobile-friendly
-
-Para gerar um executável Windows localmente:
-
-```powershell
-python build_exe.py
-```
-
-O binário ficará na pasta `dist/` e pode ser distribuído para uso em desktop. O app também foi ajustado para ter comportamento responsivo em celular e desktop, com meta tags de viewport e manifest PWA mínimo em `static/manifest.webmanifest`.
-
-Se quiser empacotar também para uso em navegador mobile, basta servir a pasta `static/` junto com o app e habilitar a instalação como aplicativo do navegador.
+O painel Streamlit (`copiloto-n1 painel`, requer `pip install -e .[legado]`) é **legado** e sai quando o PWA cobrir o mesmo fluxo. O app desktop PySide6 está em `legado/desktop/` e não é mais evoluído.
 
 ## Modo demo
 
@@ -167,7 +139,7 @@ tests/           testes automatizados
 - `perfil.py`: regras do perfil de qualidade e validações por campo.
 - `validador.py`: nota, pendências e pergunta sugerida.
 - `extrator.py`: extração por regras a partir da conversa.
-- `painel.py`: painel Streamlit com edição em tempo real, demo e export/import.
+- `painel.py`: painel Streamlit (legado) com edição, demo e export/import.
 - `cli.py`: interface de linha de comando para uso rápido e integração.
 
 ## Privacidade e segurança

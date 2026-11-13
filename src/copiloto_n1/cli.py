@@ -135,11 +135,6 @@ def _cmd_painel(args: argparse.Namespace) -> int:
         return 2
 
 
-def _cmd_desktop(args: argparse.Namespace) -> int:
-    from copiloto_n1.desktop_app import main as desktop_main
-    return desktop_main()
-
-
 def _parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(prog="copiloto-n1", description=__doc__)
     sub = p.add_subparsers(dest="comando", required=True)
@@ -183,19 +178,15 @@ def _parser() -> argparse.ArgumentParser:
     x.add_argument("--issue-type", help="Tipo de issue do Jira")
     x.set_defaults(func=_cmd_exportar)
 
-    pnr = sub.add_parser("painel", help="abre o painel Streamlit para editar o chamado em tempo real")
+    pnr = sub.add_parser("painel", help="[legado] painel Streamlit; será substituído pelo PWA")
     pnr.set_defaults(func=_cmd_painel)
 
-    desktop = sub.add_parser("desktop", help="abre a aplicação desktop nativa do N1 Flow")
-    desktop.set_defaults(func=_cmd_desktop)
     return p
 
 
 def main(argv: list[str] | None = None) -> int:
-    if argv is None:
-        argv = ["desktop"]
-    elif not argv:
-        argv = ["desktop"]
+    if not argv and argv is not None:
+        argv = ["--help"]
     args = _parser().parse_args(argv)
     try:
         return args.func(args)

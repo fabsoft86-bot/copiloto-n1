@@ -1,6 +1,6 @@
 # Instruções para o GitHub Copilot — Copiloto N1
 
-Você implementa tarefas deste projeto. Leia `docs/PRD.md`, `docs/adr/` e `docs/backlog.md` antes de propor mudanças.
+Você implementa tarefas deste projeto. Leia `COPILOT.md`, `docs/PRD.md`, `docs/adr/` (principalmente o ADR-0003, PWA primeiro) e `docs/backlog.md` antes de propor mudanças. A interface oficial é um PWA; o Python é a especificação de referência.
 
 ## O projeto em uma frase
 
@@ -10,7 +10,7 @@ Copiloto para analista de suporte N1: lê a conversa de atendimento, preenche o 
 
 - O **núcleo** (`schemas`, `perfil`, `validador`, `extrator`) **não conhece nenhum helpdesk**. Integrações ficam em `src/copiloto_n1/adaptadores/`, uma classe por helpdesk, herdando de `AdaptadorHelpdesk`.
 - **Regras de negócio vivem no perfil YAML** (`src/copiloto_n1/perfis/`), não em `if` espalhados. Para mudar campos, pesos, perguntas ou SLA, edite o YAML.
-- O protótipo trabalha com **texto**; não adicione dependência de áudio sem ADR novo.
+- O produto é **sem LLM**, offline e com dados locais; não adicione dependência de áudio, nuvem ou LLM sem ADR novo.
 - Use **pydantic v2** para dados externos (JSON, saída de LLM). Valide na borda.
 - Extração automática **nunca sobrescreve** valor já preenchido pelo analista (use `mesclar`).
 

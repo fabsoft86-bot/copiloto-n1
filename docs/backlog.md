@@ -1,37 +1,42 @@
 # Backlog
 
-Marque `[x]` ao concluir. Cada item tem critério de aceite curto; detalhes em `docs/PRD.md`.
+Marque `[x]` ao concluir. Uma etapa por vez; cada uma termina com um teste de aceite. Direção: PWA, sem LLM (ADR-0003).
 
-## Fatia 1 — Validador (esqueleto entregue)
+## Feito (especificação de referência em Python)
 
-- [x] Schema `Chamado` (pydantic) e perfil YAML de software house/ERP
-- [x] Validador com nota, pendências e perguntas sugeridas
-- [x] CLI `validar` e `extrair`
-- [x] Extrator por regras (CNPJ, telefone, e-mail, nome)
-- [x] Adaptador de arquivo
-- [x] Testes do validador, do perfil, do extrator e do adaptador
+- [x] Schema `Chamado`, perfil YAML de software house/ERP, validador com nota, pendências e perguntas
+- [x] Extrator por regras (CNPJ, telefone, e-mail, nome), CLI, adaptador de arquivo, testes (67 passando)
 
-## Fatia 2 — Painel
+## Etapa 1 — Roteiro guiado (PWA)
 
-- [ ] Painel Streamlit: colar conversa → ver campos extraídos, nota e pendências. *Aceite:* editar um campo recalcula a nota na hora.
-- [ ] Botão "gerar chamado final". *Aceite:* gera texto com título, descrição, passos, evidências e solução.
+- [ ] Roteiro em dados (YAML/JSON) com ramificação por tipo: dúvida, erro, solicitação.
+- [ ] Tela que mostra **uma pergunta por vez**, com respostas por clique ou campo curto.
+- [ ] Validação na hora (CNPJ, telefone, e-mail), portada do `validador.py`.
+- [ ] *Aceite:* rodar 3 atendimentos fictícios (um de cada tipo) do começo ao fim, sem erro.
 
-## Fatia 3 — Extração por LLM
+## Etapa 2 — Texto final e copiar
 
-- [ ] `ExtratorLLM` com saída estruturada validada por pydantic. *Aceite:* extrai tipo, módulo, versão e descrição de 5 conversas fictícias.
-- [ ] Sugestão da próxima pergunta. *Aceite:* sempre aponta uma pendência existente, nunca inventa campo.
-- [ ] Aviso de classificação suspeita (descrição de erro marcada como dúvida) além do aviso por palavras-chave.
+- [ ] Gerar o texto do chamado (título, descrição, passos, evidências, solução) a partir das respostas.
+- [ ] Botão **copiar**.
+- [ ] *Aceite:* colar o resultado no helpdesk real e achar que ficou bom. Começar o **teste de uma semana** em atendimentos reais.
 
-## Fatia 4 em diante
+## Etapa 3 — PWA instalável e histórico local
 
-- [ ] Base de conhecimento local e busca de casos parecidos
-- [ ] Rascunho de artigo KCS ao resolver
-- [ ] Mascaramento de dados sensíveis
-- [ ] Decisão local vs. nuvem para transcrição; captura de áudio
-- [ ] Adaptador GLPI (API REST)
-- [ ] Chatbot de autoatendimento
+- [ ] Manifest + service worker (offline) com versão de cache.
+- [ ] Histórico no dispositivo (IndexedDB), busca simples, exportar/importar.
+- [ ] *Aceite:* instalar no celular e no PC, usar sem internet, exportar e reimportar o histórico.
 
-## Ideias soltas
+## Etapa 4 — Opcional
 
-- Perfil "TI interna" (ativo, usuário, setor) como segundo perfil
-- Indicadores pessoais (tempo de resposta, FCR, reabertura)
+- [ ] Microfone e transcrição (decidir local vs. nuvem antes; LGPD) e pré-preenchimento por regras.
+- [ ] Integração com helpdesk (só se as etapas anteriores provarem valor).
+
+## Limpeza
+
+- [ ] Remover o painel Streamlit quando o PWA cobrir o fluxo.
+- [ ] Remover o `ExtratorLLM` com fallback de palavras-chave (produto é sem LLM).
+- [ ] Decidir o destino do núcleo Python depois da portagem (manter como referência ou remover).
+
+## Critério de decisão (fim da Etapa 2)
+
+Após uma semana de uso real: economizou tempo ou evitou esquecimentos? Abri o app por vontade própria? Se não, abandonar e escolher outro projeto.

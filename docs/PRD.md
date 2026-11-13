@@ -1,6 +1,6 @@
 # PRD — Copiloto N1
 
-**Status:** rascunho v0.1 · fase de planejamento aprovada, protótipo em início
+**Status:** rascunho v0.2 · produto redefinido em 2026-11-11: assistente pessoal sem LLM, **PWA primeiro** (ADR-0003). As seções abaixo ainda descrevem a visão anterior (com IA); o backlog em `docs/backlog.md` é a fonte do que será feito agora.
 **Dono do produto:** você (decide escopo e prioridade)
 **Perfil inicial:** software house / ERP (campos configuráveis para outros perfis)
 
@@ -131,7 +131,7 @@ Prioridade MoSCoW. Cada item deve virar uma tarefa no backlog com critério de a
 ## 10. Roadmap por fatias verticais
 
 - **Fatia 1 — Validador (este esqueleto):** schemas, perfil YAML, validador, CLI, testes.
-- **Fatia 2 — Extração por regras + painel:** conversa em texto → campos → painel simples (Streamlit/Gradio).
+- **Fatia 2 — Extração por regras + painel:** conversa em texto → campos → painel simples (hoje: PWA, ver ADR-0003).
 - **Fatia 3 — Extração por LLM:** saída estruturada validada com pydantic; sugestão da próxima pergunta.
 - **Fatia 4 — Geração do registro final e adaptador de arquivo.**
 - **Fatia 5 — Base de conhecimento:** busca de casos parecidos e rascunho KCS.
