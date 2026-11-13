@@ -13,6 +13,7 @@ import {
   passoPorId,
 } from '../nucleo/roteiro.js';
 import { validar, checarCampo } from '../nucleo/validador.js';
+import { gerarTexto } from '../nucleo/texto.js';
 
 const raiz = document.getElementById('app');
 
@@ -225,6 +226,33 @@ function telaDaPergunta(passo) {
   ];
 }
 
+async function copiarTexto(texto, botao) {
+  let ok = false;
+  try {
+    await navigator.clipboard.writeText(texto);
+    ok = true;
+  } catch {
+    const area = document.getElementById('texto-final');
+    area.focus();
+    area.select();
+    try { ok = document.execCommand('copy'); } catch { ok = false; }
+  }
+  botao.textContent = ok ? 'Copiado!' : 'Não consegui copiar: selecione o texto e use Ctrl+C';
+  setTimeout(() => { botao.textContent = 'Copiar texto'; }, 2500);
+}
+
+function blocoDoTexto() {
+  const texto = gerarTexto(estado, perfil);
+  const botao = h('button', { type: 'button', class: 'principal', 'data-foco': true, onclick: () => copiarTexto(texto, botao) }, 'Copiar texto');
+  return h(
+    'section',
+    { class: 'cartao' },
+    h('p', { class: 'rotulo' }, 'Texto para colar no Zendesk'),
+    h('textarea', { id: 'texto-final', class: 'texto-final', readonly: true, rows: 14, 'aria-label': 'Texto final do chamado' }, texto),
+    h('div', { class: 'acoes' }, botao),
+  );
+}
+
 function telaDaRevisao() {
   const r = validar(estado.chamado, perfil);
   const pendencias = r.pendencias.map((p) =>
@@ -251,9 +279,10 @@ function telaDaRevisao() {
         'div',
         { class: 'acoes' },
         estado.puladas.length ? h('button', { type: 'button', onclick: () => atualizar(retomarPuladas(estado)) }, `Retomar ${estado.puladas.length} puladas`) : null,
-        h('button', { type: 'button', class: 'principal', onclick: novoAtendimentoComConfirmacao }, 'Novo atendimento'),
       ),
     ),
+    blocoDoTexto(),
+    h('div', { class: 'acoes' }, h('button', { type: 'button', onclick: novoAtendimentoComConfirmacao }, 'Novo atendimento')),
     jaAnotado(),
   ];
 }

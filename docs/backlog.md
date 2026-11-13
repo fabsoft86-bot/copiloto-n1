@@ -17,8 +17,9 @@ Marque `[x]` ao concluir. Uma etapa por vez; cada uma termina com um teste de ac
 
 ## Etapa 2 — Texto final e copiar
 
-- [ ] Gerar o texto do chamado (título, descrição, passos, evidências, solução) a partir das respostas.
-- [ ] Botão **copiar**.
+- [x] Gerar o texto do chamado a partir das respostas (`pwa/nucleo/texto.js`, texto simples; exemplo fictício em `docs/exemplos/ticket-zendesk.md`).
+- [x] Botão **copiar** (com plano B: selecionar e Ctrl+C).
+- [ ] Verificar no Zendesk real se o texto simples cola bem (e se Markdown seria aceito).
 - [ ] *Aceite:* colar o resultado no helpdesk real e achar que ficou bom. Começar o **teste de uma semana** em atendimentos reais.
 
 ## Etapa 3 — PWA instalável e histórico local

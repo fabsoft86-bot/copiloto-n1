@@ -165,3 +165,5 @@ details.anotado summary { cursor: pointer; color: var(--texto-suave); font-size:
 .aviso-lista { margin: 12px 0 0; padding-left: 18px; }
 
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.texto-final { font: 0.85rem/1.4 ui-monospace, Consolas, monospace; min-height: 260px; white-space: pre-wrap; overflow-wrap: anywhere; }
