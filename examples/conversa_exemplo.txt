@@ -1,0 +1,10 @@
+Analista: Suporte, bom dia! Com quem eu falo?
+Cliente: Oi, bom dia. Aqui é a Marina Souza, da Calçados Exemplo.
+Analista: Bom dia, Marina. Pode me passar o CNPJ da empresa?
+Cliente: Claro: 11.222.333/0001-81.
+Analista: Obrigado. E o que está acontecendo?
+Cliente: O PDV não está emitindo a nota fiscal. Aparece um erro na hora de finalizar a venda e os caixas estão parados.
+Analista: Entendi. Qual o melhor telefone para retorno?
+Cliente: Pode ser o (11) 91234-5678.
+Analista: Repetindo para confirmar: (11) 91234-5678, é isso?
+Cliente: Isso mesmo. Meu e-mail é marina.souza@exemplo.com.br, se precisar mandar algo.

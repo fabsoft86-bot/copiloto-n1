@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "copiloto-n1"
+version = "0.1.0"
+description = "Copiloto para analista de suporte N1: extrai o chamado da conversa, valida a qualidade e sugere a próxima pergunta."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "pydantic>=2.0",
+    "pyyaml>=6.0",
+    "streamlit>=1.41",
+    "PySide6>=6.8",
+    "numpy>=1.26",
+    "sounddevice>=0.4.7",
+    "soundfile>=0.12.1",
+    "faster-whisper>=1.0.0",
+    "PyAudioWPatch>=0.2.12.6",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+build = ["pyinstaller>=6.0"]
+
+[project.scripts]
+copiloto-n1 = "copiloto_n1.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+copiloto_n1 = ["perfis/*.yaml"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

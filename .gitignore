@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+
+# Build
+build/
+dist/
+
+# Segredos
+.env
+
+# Dados locais: modelos Whisper (~480 MB), gravações de áudio, históricos e logs.
+# Áudio de atendimento contém voz e dados pessoais de clientes (LGPD): nunca versionar.
+data/*
+!data/README.md
+gravacoes/
+logs/
+saida/
+*.wav
+*.webm
+*.mp3
+
+# Editor
+.vscode/*.log

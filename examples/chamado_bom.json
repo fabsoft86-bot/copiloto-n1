@@ -1,0 +1,30 @@
+{
+  "contato_nome": "Marina Souza",
+  "empresa": "Calçados Exemplo Ltda",
+  "cnpj": "11.222.333/0001-81",
+  "telefone": "(11) 91234-5678",
+  "telefone_confirmado": true,
+  "email": "marina.souza@exemplo.com.br",
+  "titulo": "Erro ao emitir NFC-e no PDV após atualização da versão",
+  "tipo": "bug",
+  "prioridade": "alta",
+  "status": "resolvido",
+  "modulo": "PDV - emissão de NFC-e",
+  "versao": "5.2.1",
+  "descricao": "Ao finalizar a venda, o PDV exibe erro de assinatura e não emite a NFC-e. Todos os caixas da loja estão parados.",
+  "quando_comecou": "Hoje pela manhã, logo após a atualização de ontem à noite",
+  "recorrente": true,
+  "mudanca_recente": "Atualização para a versão 5.2.1 ontem à noite",
+  "escopo": "Todos os caixas da loja",
+  "dependencias_externas": "Internet ok; serviço da SEFAZ operando",
+  "passos_reproducao": [
+    "Abrir o PDV e lançar um item",
+    "Finalizar a venda em dinheiro",
+    "O erro de assinatura aparece ao emitir a NFC-e"
+  ],
+  "evidencias": ["print-erro-nfce.png", "gravacao-acesso-remoto.mp4"],
+  "reproduzido_base_teste": true,
+  "causa_raiz": "Certificado digital da empresa vencido",
+  "solucao": "Orientada a renovação; novo certificado instalado em Configuração > Certificado e emissão normalizada.",
+  "retorno_ao_cliente_feito": true
+}
