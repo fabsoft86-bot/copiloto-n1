@@ -2,7 +2,7 @@
 
 Assistente **pessoal** para o analista de suporte N1: um **roteiro guiado de perguntas** que conduz o atendimento, aponta o que falta e gera o texto final do chamado para colar em qualquer helpdesk. **Sem LLM**, offline, com os dados ficando no seu dispositivo. O analista continua no controle: a ferramenta sugere, o humano confirma.
 
-> **Direção atual: PWA primeiro** (ver `docs/adr/0003-pwa-first.md`). O código Python deste repositório (validador, perfil, extrator, CLI) é a **especificação de referência** das regras, que serão portadas para o PWA. O app desktop foi arquivado em `legado/desktop/`. Estado: o PWA ainda não foi construído; veja `docs/backlog.md`.
+> **Direção atual: PWA primeiro** (ver `docs/adr/0003-pwa-first.md`). O código Python deste repositório (validador, perfil, extrator, CLI) é a **especificação de referência** das regras, que serão portadas para o PWA. O app desktop foi arquivado em `legado/desktop/`. Estado: Etapa 1 do PWA pronta (roteiro guiado); veja `docs/backlog.md`.
 
 ## Visão geral do produto
 
@@ -51,6 +51,16 @@ python -m pip install -e ".[dev]"
 ```bash
 pytest
 ```
+
+## PWA (em construção)
+
+```bash
+cd pwa
+npm test     # 16 testes: validador (conferido com o Python), motor do roteiro e 3 atendimentos de aceite
+npm start    # http://localhost:8080
+```
+
+Estado: Etapa 1 (roteiro guiado, uma pergunta por vez) funcionando; o texto final para o Zendesk é a Etapa 2. Perfil e casos de teste são regenerados do Python com `tools/gerar_perfil_json.py` e `tools/gerar_casos_validador.py`.
 
 ## Interface
 

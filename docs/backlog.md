@@ -9,10 +9,11 @@ Marque `[x]` ao concluir. Uma etapa por vez; cada uma termina com um teste de ac
 
 ## Etapa 1 — Roteiro guiado (PWA)
 
-- [ ] Roteiro em dados (YAML/JSON) com ramificação por tipo: dúvida, erro, solicitação.
-- [ ] Tela que mostra **uma pergunta por vez**, com respostas por clique ou campo curto.
-- [ ] Validação na hora (CNPJ, telefone, e-mail), portada do `validador.py`.
-- [ ] *Aceite:* rodar 3 atendimentos fictícios (um de cada tipo) do começo ao fim, sem erro.
+- [x] Roteiro em dados (`pwa/perfis/software_house.json`, gerado do YAML) com ramificação por tipo e situação.
+- [x] Tela que mostra **uma pergunta por vez**, com respostas por clique ou campo curto, voltar, pular e editar.
+- [x] Validação na hora (CNPJ, telefone, e-mail, título), portada do `validador.py` e conferida contra 345 casos gerados pelo Python.
+- [x] *Aceite:* 3 atendimentos fictícios (dúvida, erro, melhoria) do começo ao fim em `pwa/tests/roteiro.test.js`; atendimento de erro também executado na tela, no Edge, com nota 100.
+- [ ] Pendente da Etapa 1: testar a tela no celular e com leitor de tela; CI rodando `pytest` e `node --test`.
 
 ## Etapa 2 — Texto final e copiar
 
