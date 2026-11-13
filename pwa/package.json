@@ -1,0 +1,11 @@
+{
+  "name": "copiloto-n1-pwa",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Copiloto N1: roteiro guiado de atendimento (PWA, offline, sem LLM)",
+  "scripts": {
+    "test": "node --test",
+    "start": "node servir.mjs"
+  }
+}

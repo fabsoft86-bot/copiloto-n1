@@ -1,0 +1,394 @@
+{
+  "nome": "software_house",
+  "descricao": "Suporte N1 de software house que atende clientes de ERP/PDV (CNPJ, versão, módulo, base de teste).",
+  "sla_horas": {
+    "alta": 4,
+    "media": 24,
+    "baixa": 72
+  },
+  "titulo": {
+    "min_caracteres": 15,
+    "min_palavras": 3,
+    "genericos": [
+      "problema",
+      "erro",
+      "duvida",
+      "dúvida",
+      "ajuda",
+      "suporte",
+      "chamado",
+      "teste",
+      "sistema"
+    ]
+  },
+  "palavras_de_erro": [
+    "erro",
+    "falha",
+    "travou",
+    "trava",
+    "travando",
+    "não abre",
+    "nao abre",
+    "não funciona",
+    "nao funciona",
+    "não consigo",
+    "nao consigo",
+    "parou",
+    "exceção"
+  ],
+  "campos": [
+    {
+      "id": "contato_nome",
+      "rotulo": "Nome do contato",
+      "peso": 8,
+      "severidade": "bloqueante",
+      "validador": "presenca",
+      "quando": "sempre",
+      "pergunta": "Com quem eu estou falando? Qual é o seu nome?"
+    },
+    {
+      "id": "empresa",
+      "rotulo": "Empresa",
+      "peso": 8,
+      "severidade": "bloqueante",
+      "validador": "presenca",
+      "quando": "sempre",
+      "pergunta": "Qual é o nome da empresa (razão social ou nome fantasia)?"
+    },
+    {
+      "id": "cnpj",
+      "rotulo": "CNPJ",
+      "peso": 6,
+      "severidade": "importante",
+      "validador": "cnpj",
+      "quando": "sempre",
+      "pergunta": "Pode me passar o CNPJ da empresa? Vou confirmar aqui com você."
+    },
+    {
+      "id": "telefone",
+      "rotulo": "Telefone de retorno",
+      "peso": 8,
+      "severidade": "bloqueante",
+      "validador": "telefone",
+      "quando": "sempre",
+      "pergunta": "Qual o melhor telefone para retorno? Deixa eu repetir para confirmar."
+    },
+    {
+      "id": "email",
+      "rotulo": "E-mail",
+      "peso": 1,
+      "severidade": "sugestao",
+      "validador": "email",
+      "quando": "sempre",
+      "pergunta": "Qual e-mail posso usar para enviar o resumo ou o passo a passo?"
+    },
+    {
+      "id": "titulo",
+      "rotulo": "Título",
+      "peso": 8,
+      "severidade": "bloqueante",
+      "validador": "titulo",
+      "quando": "sempre",
+      "pergunta": "Resuma em uma frase: o que acontece, onde e qual o efeito para o cliente."
+    },
+    {
+      "id": "tipo",
+      "rotulo": "Tipo",
+      "peso": 6,
+      "severidade": "bloqueante",
+      "validador": "presenca",
+      "quando": "sempre",
+      "pergunta": "É uma dúvida, um erro do sistema (bug), uma melhoria ou uma customização?"
+    },
+    {
+      "id": "prioridade",
+      "rotulo": "Prioridade",
+      "peso": 5,
+      "severidade": "importante",
+      "validador": "presenca",
+      "quando": "sempre",
+      "pergunta": "O sistema está parado ou existe alguma alternativa para o cliente continuar?"
+    },
+    {
+      "id": "descricao",
+      "rotulo": "Descrição",
+      "peso": 8,
+      "severidade": "bloqueante",
+      "validador": "presenca",
+      "quando": "sempre",
+      "pergunta": "O que exatamente acontece? Aparece alguma mensagem de erro?"
+    },
+    {
+      "id": "modulo",
+      "rotulo": "Módulo/tela",
+      "peso": 4,
+      "severidade": "importante",
+      "validador": "presenca",
+      "quando": "sempre",
+      "pergunta": "Em qual módulo ou tela isso acontece?"
+    },
+    {
+      "id": "quando_comecou",
+      "rotulo": "Quando começou",
+      "peso": 4,
+      "severidade": "importante",
+      "validador": "presenca",
+      "quando": "sempre",
+      "pergunta": "Quando começou? Foi agora ou já faz um tempo?"
+    },
+    {
+      "id": "recorrente",
+      "rotulo": "Recorrência",
+      "peso": 3,
+      "severidade": "sugestao",
+      "validador": "booleano_definido",
+      "quando": "sempre",
+      "pergunta": "Acontece sempre ou foi só uma vez?"
+    },
+    {
+      "id": "mudanca_recente",
+      "rotulo": "Mudança recente",
+      "peso": 4,
+      "severidade": "importante",
+      "validador": "presenca",
+      "quando": "sempre",
+      "pergunta": "Houve atualização, instalação ou alguma mudança recente? (Se não, registre 'nenhuma'.)"
+    },
+    {
+      "id": "escopo",
+      "rotulo": "Abrangência",
+      "peso": 3,
+      "severidade": "importante",
+      "validador": "presenca",
+      "quando": "sempre",
+      "pergunta": "Acontece em um computador só ou em vários?"
+    },
+    {
+      "id": "versao",
+      "rotulo": "Versão do sistema",
+      "peso": 4,
+      "severidade": "importante",
+      "validador": "presenca",
+      "quando": "tipo=bug",
+      "pergunta": "Qual a versão do sistema? (Confira se é a última.)"
+    },
+    {
+      "id": "evidencias",
+      "rotulo": "Evidências (print/vídeo/log)",
+      "peso": 6,
+      "severidade": "importante",
+      "validador": "lista",
+      "quando": "tipo=bug",
+      "pergunta": "Consegue enviar um print ou gravar a tela quando o erro aparece?"
+    },
+    {
+      "id": "passos_reproducao",
+      "rotulo": "Passos para reproduzir",
+      "peso": 6,
+      "severidade": "importante",
+      "validador": "lista",
+      "quando": "tipo=bug",
+      "pergunta": "Quais passos você faz até aparecer o erro? Um por um, por favor."
+    },
+    {
+      "id": "reproduzido_base_teste",
+      "rotulo": "Reproduzido na base de teste",
+      "peso": 4,
+      "severidade": "importante",
+      "validador": "booleano_definido",
+      "quando": "tipo=bug",
+      "pergunta": "Consegui reproduzir na minha base de teste, na mesma versão do cliente?"
+    },
+    {
+      "id": "dependencias_externas",
+      "rotulo": "Dependências externas",
+      "peso": 2,
+      "severidade": "sugestao",
+      "validador": "presenca",
+      "quando": "tipo=bug",
+      "pergunta": "Rede, servidor ou alguma integração pode estar envolvido?"
+    },
+    {
+      "id": "causa_raiz",
+      "rotulo": "Causa raiz",
+      "peso": 4,
+      "severidade": "importante",
+      "validador": "presenca",
+      "quando": "status=resolvido",
+      "pergunta": "Qual foi a causa? Pergunte 'por quê' até chegar na origem (5 porquês)."
+    },
+    {
+      "id": "solucao",
+      "rotulo": "Solução aplicada",
+      "peso": 8,
+      "severidade": "bloqueante",
+      "validador": "presenca",
+      "quando": "status=resolvido",
+      "pergunta": "O que foi feito para resolver? Registre o passo a passo ou o script usado."
+    },
+    {
+      "id": "destino_escalonamento",
+      "rotulo": "Destino do escalonamento",
+      "peso": 8,
+      "severidade": "bloqueante",
+      "validador": "presenca",
+      "quando": "status=escalado",
+      "pergunta": "Para quem vai? (N2, N3, comercial, implantação, desenvolvimento)"
+    },
+    {
+      "id": "retorno_ao_cliente_feito",
+      "rotulo": "Cliente informado",
+      "peso": 4,
+      "severidade": "importante",
+      "validador": "verdadeiro",
+      "quando": "status=resolvido|escalado",
+      "pergunta": "Já avisei o cliente da solução ou do próximo passo e do prazo?"
+    }
+  ],
+  "roteiro": [
+    {
+      "id": "contato_nome",
+      "entrada": "texto"
+    },
+    {
+      "id": "empresa",
+      "entrada": "texto"
+    },
+    {
+      "id": "cnpj",
+      "entrada": "texto"
+    },
+    {
+      "id": "telefone",
+      "entrada": "telefone"
+    },
+    {
+      "id": "tipo",
+      "entrada": "escolha",
+      "opcoes": [
+        {
+          "valor": "duvida",
+          "rotulo": "Dúvida"
+        },
+        {
+          "valor": "bug",
+          "rotulo": "Erro do sistema (bug)"
+        },
+        {
+          "valor": "melhoria",
+          "rotulo": "Melhoria"
+        },
+        {
+          "valor": "customizacao",
+          "rotulo": "Customização"
+        }
+      ]
+    },
+    {
+      "id": "descricao",
+      "entrada": "texto_longo"
+    },
+    {
+      "id": "modulo",
+      "entrada": "texto"
+    },
+    {
+      "id": "versao",
+      "entrada": "texto"
+    },
+    {
+      "id": "quando_comecou",
+      "entrada": "texto"
+    },
+    {
+      "id": "recorrente",
+      "entrada": "simnao"
+    },
+    {
+      "id": "mudanca_recente",
+      "entrada": "texto"
+    },
+    {
+      "id": "escopo",
+      "entrada": "texto"
+    },
+    {
+      "id": "prioridade",
+      "entrada": "escolha",
+      "opcoes": [
+        {
+          "valor": "alta",
+          "rotulo": "Alta: sistema parado"
+        },
+        {
+          "valor": "media",
+          "rotulo": "Média: há alternativa"
+        },
+        {
+          "valor": "baixa",
+          "rotulo": "Baixa: sem urgência"
+        }
+      ]
+    },
+    {
+      "id": "passos_reproducao",
+      "entrada": "lista"
+    },
+    {
+      "id": "evidencias",
+      "entrada": "lista"
+    },
+    {
+      "id": "reproduzido_base_teste",
+      "entrada": "simnao"
+    },
+    {
+      "id": "dependencias_externas",
+      "entrada": "texto"
+    },
+    {
+      "id": "titulo",
+      "entrada": "texto"
+    },
+    {
+      "id": "email",
+      "entrada": "texto"
+    },
+    {
+      "id": "status",
+      "entrada": "escolha",
+      "opcoes": [
+        {
+          "valor": "aberto",
+          "rotulo": "Segue aberto"
+        },
+        {
+          "valor": "resolvido",
+          "rotulo": "Resolvido"
+        },
+        {
+          "valor": "escalado",
+          "rotulo": "Escalado"
+        }
+      ],
+      "rotulo": "Situação do atendimento",
+      "pergunta": "Como terminou este atendimento?"
+    },
+    {
+      "id": "causa_raiz",
+      "entrada": "texto_longo"
+    },
+    {
+      "id": "solucao",
+      "entrada": "texto_longo"
+    },
+    {
+      "id": "destino_escalonamento",
+      "entrada": "texto"
+    },
+    {
+      "id": "retorno_ao_cliente_feito",
+      "entrada": "simnao"
+    }
+  ]
+}
